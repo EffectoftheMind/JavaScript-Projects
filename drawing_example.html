@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<canvas id="myCanvas" width="400" height="200" style="border:3px solid #000000"></canvas>
+<script>
+var canvas = document.getElementById("myCanvas")
+var pen = canvas.getContext("2d")
+
+//draw a gradient
+var grd = pen.createRadialGradient(0,0,400,400,0,0);
+grd.addColorStop(0,"red");
+grd.addColorStop(1,"blue");
+
+//draw rectangle with gradient
+pen.fillStyle = grd;
+pen.fillRect(0,0,400,400)
+
+// draw a line
+pen.moveTo(0,0);
+pen.lineTo(400,200);
+pen.stroke();
+
+/* draw a circle
+pen.beginPath();
+pen.arc(70,110,50,0,2*Math.PI);
+pen.stroke(); */
+
+//fill color
+pen.fillStyle="#10f22f";
+
+// draw text
+pen.font="30px Verdana";
+pen.fillText("Hello World",200,40);
+
+</script>
+</body>
+</html>
