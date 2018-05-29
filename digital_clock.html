@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="myCanvas" width="500" height="200" style="background-color: #000000"></canvas>
+<script>
+
+setInterval(drawClock, 1000)
+
+background_image = new Image()
+background_image.src = "https://images.pexels.com/photos/813269/pexels-photo-813269.jpeg?auto=compress&cs=tinysrgb&h=350"
+
+function drawClock(){
+  canvas = document.getElementById("myCanvas")
+  pen = canvas.getContext("2d")
+  now = new Date();
+  hour = now.getHours();
+  minute = now.getMinutes();
+
+  pen.drawImage(background_image, 0, 0, canvas.width, canvas.height)
+
+  // this adds a zero to the front if it’s a 1-9
+  minute = minute > 9 ? minute : '0' + minute;
+  second = now.getSeconds();
+  year = now.getFullYear();
+  day = now.getDate();
+  day_of_week = now.getDay();
+  month = now.getMonth();
+
+  month = month + 1
+
+  switch(day_of_week){
+    case 1:
+      day_of_week = "Monday"
+      break;
+    case 2:
+      day_of_week = "Tuesday"
+      break;
+    case 3:
+      day_of_week = "Wednesday"
+      break;
+    case 4:
+      day_of_week = "Thursday"
+      break;
+    case 5:
+      day_of_week = "Friday"
+      break;
+    case 6:
+      day_of_week = "Saturday"
+      break;
+    case 7:
+      day_of_week = "Sunday"
+      break;
+  }
+  
+  switch(month){
+    case 1:
+      month = "January"
+      break;
+    case 2:
+      month = "February"
+      break;
+    case 3:
+      month = "March"
+      break;
+    case 4:
+      month = "April"
+      break;
+    case 5:
+      month = "May"
+      break;
+    case 6:
+      month = "June"
+      break;
+    case 7:
+      month = "July"
+      break;
+    case 8:
+      month = "August"
+      break;
+    case 9:
+      month = "September"
+      break;
+    case 10:
+      month = "October"
+      break;
+    case 11:
+      month = "November"
+      break;
+    case 12:
+      month = "December"
+      break;
+  }
+
+  switch(hour){
+    case 13:
+      hour = 1
+      break;
+    case 14:
+      hour = 2
+      break;
+    case 15:
+      hour = 3
+      break;
+    case 16:
+      hour = 4
+      break;
+    case 17:
+      hour = 5
+      break;
+    case 18:
+      hour = 6
+      break;
+    case 19:
+      hour = 7
+      break;
+    case 20:
+      hour = 8
+      break;
+    case 21:
+      hour = 9
+      break;
+    case 22:
+      hour = 10
+      break;
+    case 23:
+      hour = 11
+      break;
+    case 24:
+      hour = 12
+      break;
+  }
+  pen.font = 35+('px Tahoma')
+  pen.fillStyle = 'white';
+  pen.textAlign = 'center';
+  pen.fillText(day_of_week + "," + " " + month + " " + day + "," + " " + year, canvas.width / 2, canvas.height / 2)
+
+  pen.font = 24+('px Tahoma')
+  pen.fillText(hour + ':' + minute, canvas.width / 2, canvas.height / 1.5)
+}
+
+</script>
+</body>
+</html>
